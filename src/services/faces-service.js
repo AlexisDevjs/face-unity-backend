@@ -1,6 +1,6 @@
 const { db, bucket } = require('../firebase-app');
 
-const collectionName = 'tbl-face';
+const collectionName = 'tbl_face';
 
 async function uploadImage(file) {
   const filename = `${Date.now()}_${file.originalname.replace(/\s+/g, '')}`;
@@ -16,6 +16,7 @@ async function uploadImage(file) {
 }
 
 async function createFace(data, file) {
+  console.log("🚀 ~ createFace ~ data:", data)
   const imgUrl = file ? await uploadImage(file) : '';
 
   const faceData = {
